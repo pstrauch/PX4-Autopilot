@@ -1,0 +1,79 @@
+#!/bin/sh
+#
+# @name Holybro X500 V2
+#
+# @type Quadrotor x
+# @class Copter
+#
+# @maintainer Pascal Strauch <dev.pstrauch@gmail.com>
+#
+# @board px4_fmu-v2 exclude
+# @board bitcraze_crazyflie exclude
+#
+
+. ${R}etc/init.d/rc.mc_defaults
+
+# Sensor Setup
+param set-default SYS_HAS_BARO 0
+param set-default SYS_HAS_GPS 0
+param set-default SYS_HAS_MAG 0
+param set-default EKF2_MULTI_IMU 0
+param set-default SENS_IMU_MODE 1
+param set-default IMU_GYRO_CUTOFF 30
+param set-default IMU_GYRO_RATEMAX 1000
+param set-default IMU_INTEG_RATE 250
+# TODO
+# param set-default EKF2_MULTI_IMU 3
+# param set-default SENS_IMU_MODE 0
+
+# Mocap Settings
+param set-default EKF2_EV_CTRL 11 # Horizontal + Vertical + Yaw
+param set-default EKF2_HGT_REF 3 # Vision
+param set-default EKF2_EV_NOISE_MD 1 # noise mode: use parameters directly
+param set-default EKF2_EVP_NOISE 0.01 # m
+param set-default EKF2_EVA_NOISE 2.87 # deg
+param set-default EKF2_EV_DELAY 0 # ms
+# Disable other sensors
+param set-default EKF2_GPS_CTRL 0
+param set-default EKF2_BARO_CTRL 0
+param set-default EKF2_OF_CTRL 0
+param set-default EKF2_RNG_CTRL 0
+param set-default EKF2_MAG_TYPE 5 # None
+param set-default EKF2_GPS_CHECK 0
+param set-default EKF2_MAG_CHECK 0
+param set-default COM_ARM_WO_GPS 2 # GPS preflight check: Disabled
+param set-default COM_ARM_MAG_STR 0 # Mag preflight check: Disabled
+# EKF2_REQ_*
+
+# Control Setup
+param set-default MC_ROLLRATE_P 0.14
+param set-default MC_PITCHRATE_P 0.14
+param set-default MC_ROLLRATE_I 0.3
+param set-default MC_PITCHRATE_I 0.3
+param set-default MC_ROLLRATE_D 0.004
+param set-default MC_PITCHRATE_D 0.004
+param set-default MC_AT_EN 0
+
+# Control Allocation (CA)
+# Square quadrotor X PX4 numbering
+param set-default CA_AIRFRAME 0
+param set-default CA_ROTOR_COUNT 4
+param set-default CA_ROTOR0_PX 1
+param set-default CA_ROTOR0_PY 1
+param set-default CA_ROTOR1_PX -1
+param set-default CA_ROTOR1_PY -1
+param set-default CA_ROTOR2_PX 1
+param set-default CA_ROTOR2_PY -1
+param set-default CA_ROTOR2_KM -0.05
+param set-default CA_ROTOR3_PX -1
+param set-default CA_ROTOR3_PY 1
+param set-default CA_ROTOR3_KM -0.05
+# CA_ROTORX_CT thrust coefficient
+# CA_ROTORX_KM moment coefficient
+
+param set-default PWM_MAIN_FUNC1 101
+param set-default PWM_MAIN_FUNC2 102
+param set-default PWM_MAIN_FUNC3 103
+param set-default PWM_MAIN_FUNC4 104
+
+# TODO battery setup

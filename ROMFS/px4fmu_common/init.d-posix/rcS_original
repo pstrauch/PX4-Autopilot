@@ -13,10 +13,6 @@ set +e
 #search path for sourcing px4-rc.*
 PATH="$PATH:${R}etc/init.d-posix"
 
-echo "INFO  [init] Sys autostart: ${PX4_SYS_AUTOSTART}"
-echo "INFO  [init] Sim model: ${PX4_SIM_MODEL}"
-
-
 #
 # Main SITL startup script
 #
