@@ -512,7 +512,7 @@ void UxrceddsClient::checkConnectivity(uxrSession *session)
 	const hrt_abstime now = hrt_absolute_time();
 
 	// Start ping and tx/rx rate monitoring, unless we're actively sending & receiving payloads successfully
-	if ((_last_payload_tx_rate > 0) && (_last_payload_rx_rate > 0)) {
+	if ((_last_payload_tx_rate > 0)) { // && (_last_payload_rx_rate > 0)) {
 		_connected = true;
 		_num_pings_missed = 0;
 		_last_ping = now;
@@ -654,7 +654,7 @@ void UxrceddsClient::run()
 			perf_begin(_loop_perf);
 			perf_count(_loop_interval_perf);
 
-			int orb_poll_timeout_ms = 10;
+			int orb_poll_timeout_ms = 1;  // default: 10
 
 			int bytes_available = 0;
 
