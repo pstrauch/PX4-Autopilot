@@ -366,5 +366,7 @@ else
 fi
 . ${R}etc/init.d/rc.logging
 
+commander mode auto:takeoff
+
 mavlink boot_complete
 replay trystart
